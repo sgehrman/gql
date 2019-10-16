@@ -1,20 +1,17 @@
 import React from "react";
 import "./App.css";
-import axios from "axios";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import Home from "./Home";
+import About from "./About";
 
 function App() {
   return (
-    <div className="App">
-      <button
-        onClick={e => {
-          axios.get("/health").then(res => {
-            console.log(res);
-          });
-        }}
-      >
-        Health
-      </button>
-    </div>
+    <BrowserRouter>
+      <Switch>
+        <Route path="/" exact component={Home} />
+        <Route path="/about" exact component={About} />
+      </Switch>
+    </BrowserRouter>
   );
 }
 
