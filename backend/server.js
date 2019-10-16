@@ -8,11 +8,16 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-const port = process.env.PORT || 3000;
-
 const app = express();
-app.use(favicon(path.join(__dirname, "../public", "favicon.ico")));
 
+var moesifMiddleware = moesifExpress({
+  applicationId:
+    "eyJhcHAiOiI2MTc6MjA0IiwidmVyIjoiMi4wIiwib3JnIjoiMjA3OjIxNyIsImlhdCI6MTU3MTE4NDAwMH0.4I75UmZcKoIZxRel9cZtzfXHZdnTGxT-Xn25UNuyyyg",
+  logBody: true
+});
+app.use(moesifMiddleware);
+
+// setup GraphQL
 const params = {
   name: "hello",
   fields: () => ({
@@ -27,13 +32,6 @@ const schema = new GraphQLSchema({
   query: new GraphQLObjectType(params)
 });
 
-// 2. Set the options, the only required field is applicationId.
-var moesifMiddleware = moesifExpress({
-  applicationId:
-    "eyJhcHAiOiI2MTc6MjA0IiwidmVyIjoiMi4wIiwib3JnIjoiMjA3OjIxNyIsImlhdCI6MTU3MTE4NDAwMH0.4I75UmZcKoIZxRel9cZtzfXHZdnTGxT-Xn25UNuyyyg",
-  logBody: true
-});
-
 app.use(
   "/graphql",
   expressGraphQL({
@@ -42,12 +40,16 @@ app.use(
   })
 );
 
+// favicon
+app.use(favicon(path.join(__dirname, "../public", "favicon.ico")));
+
+// health endpoint
 app.get("/health", (eq, res) => {
   res.send("healthy");
 });
 
-// 3 Enable the Moesif middleware to start capturing incoming GraphQL API Calls hitting your APIs.
-app.use(moesifMiddleware);
+// start server
+const port = process.env.PORT || 3000;
 const server = app.listen(port, () => {
   console.log("server is running at %s .", server.address().port);
 });
