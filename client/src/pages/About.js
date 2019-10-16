@@ -8,6 +8,13 @@ const About = props => {
       <HeaderBar />
 
       <div>About</div>
+
+      <div>
+        Source code can be found{" "}
+        <a href="https://github.com/sgehrman/gql" target="_blank">
+          here.
+        </a>
+      </div>
     </>
   );
 };

@@ -33,11 +33,18 @@ const Home = props => {
       <div>Home</div>
 
       <div className={styles.buttonList}>
-        <Link to="/todoreducer">TodoReducer</Link>
-        <Link to="/todostate">TodoState</Link>
+        <Link to="/todoreducer">
+          <button type="button">Todo with Reducer</button>
+        </Link>
+        <Link to="/todostate">
+          <button type="button">Todo with State</button>
+        </Link>
+
+        <div>Endpoint calls</div>
 
         <button onClick={handleHealth}>Health</button>
 
+        <div>GraphQL calls</div>
         <button onClick={handleMessage}>Message</button>
       </div>
     </div>
