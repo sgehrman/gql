@@ -35,7 +35,7 @@ var moesifMiddleware = moesifExpress({
 });
 
 app.get("/", (req, res) => {
-  res.send("GET request to the homepage");
+  res.sendFile(path.join(__dirname + "/../public/index.html"));
 });
 
 app.use(
