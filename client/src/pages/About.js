@@ -1,11 +1,13 @@
 import React from "react";
-import { Link, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
+import HeaderBar from "../components/HeaderBar.js";
 
 const About = props => {
   return (
     <>
+      <HeaderBar />
+
       <div>About</div>
-      <Link to="/">Back Home</Link>
     </>
   );
 };

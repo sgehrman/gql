@@ -1,6 +1,8 @@
 import React from "react";
 import { Link, withRouter } from "react-router-dom";
 import axios from "axios";
+import HeaderBar from "../components/HeaderBar.js";
+import styles from "../styles/shared.module.scss";
 
 const Home = props => {
   const handleHealth = e => {
@@ -26,18 +28,19 @@ const Home = props => {
   };
 
   return (
-    <>
+    <div className={styles.page}>
+      <HeaderBar />
       <div>Home</div>
-      <Link to="/about">About</Link>
-      <Link to="/todoreducer">TodoReducer</Link>
-      <Link to="/todostate">TodoState</Link>
 
-      <div className="App">
+      <div className={styles.buttonList}>
+        <Link to="/todoreducer">TodoReducer</Link>
+        <Link to="/todostate">TodoState</Link>
+
         <button onClick={handleHealth}>Health</button>
 
         <button onClick={handleMessage}>Message</button>
       </div>
-    </>
+    </div>
   );
 };
 

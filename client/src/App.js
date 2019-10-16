@@ -1,10 +1,9 @@
 import React from "react";
-import "./App.css";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import Home from "./Home";
-import About from "./About";
-import TodoState from "./TodoState";
-import TodoReducer from "./TodoReducer";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import TodoState from "./pages/TodoState";
+import TodoReducer from "./pages/TodoReducer";
 
 function App() {
   return (

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, withRouter } from "react-router-dom";
+import HeaderBar from "../components/HeaderBar.js";
 
 function Todo() {
   const [todos, setTodos] = useState([]);
@@ -19,7 +19,8 @@ function Todo() {
 
   return (
     <div>
-      <Link to="/">Back Home</Link>
+      <HeaderBar />
+      <div>Todo List using state</div>
 
       <form
         onSubmit={e => {

@@ -1,5 +1,5 @@
 import React, { useReducer, useState } from "react";
-import { Link, withRouter } from "react-router-dom";
+import HeaderBar from "../components/HeaderBar.js";
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -22,8 +22,9 @@ function Todo() {
 
   return (
     <div>
-      <Link to="/">Back Home</Link>
+      <HeaderBar />
 
+      <div>Todo List using reducer</div>
       <form
         onSubmit={e => {
           e.preventDefault();

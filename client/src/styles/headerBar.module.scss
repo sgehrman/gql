@@ -1,0 +1,14 @@
+.headerBar {
+  padding: 10px;
+  background: blue;
+  color: white;
+  margin-bottom: 20px;
+
+  .contents {
+    a {
+      text-decoration: none;
+      color: white;
+      margin-right: 20px;
+    }
+  }
+}
