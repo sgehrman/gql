@@ -34,10 +34,6 @@ var moesifMiddleware = moesifExpress({
   logBody: true
 });
 
-app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname + "/../public/index.html"));
-});
-
 app.use(
   "/graphql",
   expressGraphQL({
@@ -45,6 +41,10 @@ app.use(
     graphiql: true
   })
 );
+
+app.get("/health", (eq, res) => {
+  res.send("healthy");
+});
 
 // 3 Enable the Moesif middleware to start capturing incoming GraphQL API Calls hitting your APIs.
 app.use(moesifMiddleware);
