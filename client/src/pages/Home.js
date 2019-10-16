@@ -1,14 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, withRouter } from "react-router-dom";
 import axios from "axios";
 import HeaderBar from "../components/HeaderBar.js";
 import styles from "../styles/shared.module.scss";
+import Dialog from "../components/Dialog.js";
 
 const Home = props => {
+  const [dialogOpen, setDialogOpen] = useState(false);
+  const [results, setResults] = useState("");
+
   const handleHealth = e => {
     axios.get("/health").then(res => {
-      console.log(res);
+      showResults(res.data);
     });
+  };
+
+  const dialogNav = () => {
+    setDialogOpen(false);
+  };
+
+  const showResults = data => {
+    setResults(JSON.stringify(data, null, 2));
+    setDialogOpen(true);
   };
 
   const handleMessage = e => {
@@ -23,7 +36,7 @@ const Home = props => {
           `
       }
     }).then(result => {
-      console.log(result.data);
+      showResults(result.data);
     });
   };
 
@@ -47,6 +60,10 @@ const Home = props => {
         <div>GraphQL calls</div>
         <button onClick={handleMessage}>Message</button>
       </div>
+
+      <Dialog open={dialogOpen} onNav={dialogNav}>
+        {results}
+      </Dialog>
     </div>
   );
 };

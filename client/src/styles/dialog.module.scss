@@ -1,0 +1,16 @@
+// had to add this .dialog wrapper so that it's .paper
+// would be chosen, otherwise .paper is overridden by the default paper
+.dialog {
+  .dialogWrapper {
+    padding: 8px 6px;
+
+    .dialogContents {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      padding: 24px 42px 40px;
+    }
+  }
+}

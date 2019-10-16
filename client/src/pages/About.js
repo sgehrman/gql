@@ -11,7 +11,11 @@ const About = props => {
 
       <div>
         Source code can be found{" "}
-        <a href="https://github.com/sgehrman/gql" target="_blank">
+        <a
+          href="https://github.com/sgehrman/gql"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           here.
         </a>
       </div>
