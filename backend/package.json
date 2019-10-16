@@ -4,9 +4,8 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "build": "babel server.js -d dist",
-    "start": "npm run build && nodemon dist/server.js",
-    "serve": "npm run build && node dist/server.js"
+    "build": "webpack",
+    "start": "npm run build && nodemon dist/bundle.js"
   },
   "author": "",
   "license": "ISC",
@@ -15,17 +14,18 @@
     "express": "^4.17.1",
     "express-graphql": "^0.9.0",
     "graphql": "^14.5.8",
-    "moesif-express": "^2.9.11",
-    "serve-favicon": "^2.5.0"
+    "moesif-express": "^2.9.11"
   },
   "devDependencies": {
     "@babel/cli": "^7.6.4",
     "@babel/core": "^7.6.4",
-    "@babel/node": "^7.6.3",
-    "@babel/plugin-transform-runtime": "^7.5.5",
+    "@babel/plugin-transform-runtime": "^7.6.2",
     "@babel/preset-env": "^7.6.3",
-    "@babel/runtime": "^7.5.5",
+    "@babel/runtime": "^7.6.3",
+    "babel-loader": "^8.0.6",
     "eslint": "^6.5.1",
-    "nodemon": "^1.19.3"
+    "nodemon": "^1.19.4",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.9"
   }
 }

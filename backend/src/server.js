@@ -1,10 +1,8 @@
 import express from "express";
 import expressGraphQL from "express-graphql";
-import { GraphQLSchema, GraphQLObjectType, GraphQLString } from "graphql";
-import favicon from "serve-favicon";
 import moesifExpress from "moesif-express";
-import path from "path";
 import dotenv from "dotenv";
+import schema from "./schema.js";
 
 dotenv.config();
 
@@ -18,19 +16,6 @@ var moesifMiddleware = moesifExpress({
 app.use(moesifMiddleware);
 
 // setup GraphQL
-const params = {
-  name: "hello",
-  fields: () => ({
-    message: {
-      type: GraphQLString,
-      resolve: () => "hello"
-    }
-  })
-};
-
-const schema = new GraphQLSchema({
-  query: new GraphQLObjectType(params)
-});
 
 app.use(
   "/graphql",
@@ -39,9 +24,6 @@ app.use(
     graphiql: true
   })
 );
-
-// favicon
-app.use(favicon(path.join(__dirname, "../public", "favicon.ico")));
 
 // health endpoint
 app.get("/health", (eq, res) => {
