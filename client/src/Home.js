@@ -29,6 +29,8 @@ const Home = props => {
     <>
       <div>Home</div>
       <Link to="/about">About</Link>
+      <Link to="/todoreducer">TodoReducer</Link>
+      <Link to="/todostate">TodoState</Link>
 
       <div className="App">
         <button onClick={handleHealth}>Health</button>
