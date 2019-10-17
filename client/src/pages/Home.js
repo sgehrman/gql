@@ -49,6 +49,7 @@ const Home = props => {
           query BooksPost {
              books {
                name
+               authorId
              }
             }
           `

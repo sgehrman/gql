@@ -2,17 +2,17 @@ import React from "react";
 import { gql } from "apollo-boost";
 import { Query } from "react-apollo";
 
-const GET_BOOKS = gql`
+const GET_AUTHORS = gql`
   query {
-    books {
+    authors {
       name
-      authorId
+      id
     }
   }
 `;
 
-const BookList = () => (
-  <Query query={GET_BOOKS}>
+const AuthorList = () => (
+  <Query query={GET_AUTHORS}>
     {({ loading, error, data }) => {
       if (loading) return <div>Loading...</div>;
       if (error) return <div>Error :(</div>;
@@ -22,4 +22,4 @@ const BookList = () => (
   </Query>
 );
 
-export default BookList;
+export default AuthorList;
