@@ -21,19 +21,18 @@ app.get("/health", (eq, res) => {
   res.send("healthy");
 });
 
-let port = 3002;
-let server = new ApolloServer({
+const apolloServer = new ApolloServer({
   typeDefs: apolloSchema.typeDefs,
   resolvers: apolloSchema.resolvers
 });
 
-server.applyMiddleware({ app });
+apolloServer.applyMiddleware({ app });
 
+let port = 3002;
 app.listen(port, () => {
-  console.log(`Apollo ready at localhost:${port}${server.graphqlPath}`);
+  console.log(`Apollo ready at localhost:${port}${apolloServer.graphqlPath}`);
 });
 
-port = 3001;
 app.use(
   "/graphql",
   expressGraphQL({
@@ -43,6 +42,7 @@ app.use(
 );
 
 // start server
-server = app.listen(port, () => {
+port = 3001;
+const server = app.listen(port, () => {
   console.log(`Express ready at ${server.address()}:${port}/graphql`);
 });
