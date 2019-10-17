@@ -18,8 +18,10 @@ $ npm i
 
 create a .env file at root
 
+```
 PORT=3001
 APPID="eyJhcHAiOiI2MTc6MjA0I...I6MTU3MTE4NDAwMH0.4I75UmZcKoIZxRel9cZtzfXHZdnTGxT-Xn25UNuyyyg"
+```
 
 to run the server:
 
