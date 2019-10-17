@@ -8,7 +8,6 @@ import {
 } from "graphql";
 import { books, authors } from "./data.js";
 
-console.log(books);
 const handleVersion = () => {
   return "version: 1.2.3";
 };

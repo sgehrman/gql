@@ -1,3 +1,5 @@
+const { gql } = require("apollo-server-express");
+
 const authors = [
   { id: 1, name: "J. K. Rowling" },
   { id: 2, name: "J. R. R. Tolkien" },
@@ -15,4 +17,24 @@ const books = [
   { id: 8, name: "Beyond the Shadows", authorId: 3 }
 ];
 
-export { authors, books };
+const apolloTypeDefs = gql`
+  # Comments in GraphQL are defined with the hash (#) symbol.
+  # This "Book" type can be used in other type declarations.
+  type Book {
+    title: String
+    author: String
+  }
+  # The "Query" type is the root of all GraphQL queries.
+  # (A "Mutation" type will be covered later on.)
+  type Query {
+    books: [Book]
+  }
+`;
+
+const apolloResolvers = {
+  Query: {
+    books: () => books
+  }
+};
+
+export { authors, books, apolloTypeDefs, apolloResolvers };

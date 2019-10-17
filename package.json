@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "@material-ui/core": "^4.5.1",
+    "apollo-server-express": "^2.9.6",
     "concurrently": "^5.0.0"
   },
   "repository": {
