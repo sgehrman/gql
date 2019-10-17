@@ -85,6 +85,9 @@ const Home = props => {
         <Link to="/todostate">
           <button type="button">Todo with State</button>
         </Link>
+        <Link to="/booklist">
+          <button type="button">Booklist Page</button>
+        </Link>
 
         <div>Endpoint calls</div>
 

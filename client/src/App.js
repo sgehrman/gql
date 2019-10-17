@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import TodoState from "./pages/TodoState";
 import TodoReducer from "./pages/TodoReducer";
+import Apollo from "./pages/Apollo.js";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route path="/about" exact component={About} />
         <Route path="/todostate" exact component={TodoState} />
         <Route path="/todoreducer" exact component={TodoReducer} />
+        <Route path="/booklist" exact component={Apollo} />
       </Switch>
     </BrowserRouter>
   );
