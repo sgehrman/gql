@@ -24,14 +24,50 @@ const Home = props => {
     setDialogOpen(true);
   };
 
-  const handleMessage = e => {
+  const handleVersion = e => {
     axios({
       url: "/graphql",
       method: "post",
       data: {
         query: `
           query MessagePost {
-             message
+             version
+            }
+          `
+      }
+    }).then(result => {
+      showResults(result.data);
+    });
+  };
+
+  const handleBooks = e => {
+    axios({
+      url: "/graphql",
+      method: "post",
+      data: {
+        query: `
+          query BooksPost {
+             books {
+               name
+             }
+            }
+          `
+      }
+    }).then(result => {
+      showResults(result.data);
+    });
+  };
+
+  const handleAuthors = e => {
+    axios({
+      url: "/graphql",
+      method: "post",
+      data: {
+        query: `
+          query AuthorsPost {
+             authors {
+               name
+             }
             }
           `
       }
@@ -55,7 +91,9 @@ const Home = props => {
         <button onClick={handleHealth}>Health</button>
 
         <div>GraphQL calls</div>
-        <button onClick={handleMessage}>Message</button>
+        <button onClick={handleVersion}>Version</button>
+        <button onClick={handleBooks}>Books</button>
+        <button onClick={handleAuthors}>Authors</button>
       </div>
 
       <Dialog open={dialogOpen} onNav={dialogNav}>
