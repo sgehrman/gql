@@ -8,41 +8,56 @@ const { ApolloServer } = require("apollo-server-express");
 
 dotenv.config();
 
-const app = express();
+const startExpressServer = () => {
+  const app = express();
 
-var moesifMiddleware = moesifExpress({
-  applicationId: process.env.APPID,
-  logBody: true
-});
-app.use(moesifMiddleware);
+  var moesifMiddleware = moesifExpress({
+    applicationId: process.env.APPID,
+    logBody: true
+  });
+  app.use(moesifMiddleware);
 
-// health endpoint
-app.get("/health", (eq, res) => {
-  res.send("healthy");
-});
+  // health endpoint
+  app.get("/health", (eq, res) => {
+    res.send("healthy");
+  });
 
-const apolloServer = new ApolloServer({
-  typeDefs: apolloSchema.typeDefs,
-  resolvers: apolloSchema.resolvers
-});
+  app.use(
+    "/graphql",
+    expressGraphQL({
+      schema,
+      graphiql: true
+    })
+  );
 
-apolloServer.applyMiddleware({ app });
+  // start server
+  const port = 3001;
+  const server = app.listen(port, () => {
+    console.log(`Express ready at ${server.address()}:${port}/graphql`);
+  });
+};
 
-let port = 3002;
-app.listen(port, () => {
-  console.log(`Apollo ready at localhost:${port}${apolloServer.graphqlPath}`);
-});
+const startApolloServer = () => {
+  const app = express();
 
-app.use(
-  "/graphql",
-  expressGraphQL({
-    schema,
-    graphiql: true
-  })
-);
+  var moesifMiddleware = moesifExpress({
+    applicationId: process.env.APPID,
+    logBody: true
+  });
+  app.use(moesifMiddleware);
 
-// start server
-port = 3001;
-const server = app.listen(port, () => {
-  console.log(`Express ready at ${server.address()}:${port}/graphql`);
-});
+  const server = new ApolloServer({
+    typeDefs: apolloSchema.typeDefs,
+    resolvers: apolloSchema.resolvers
+  });
+
+  server.applyMiddleware({ app });
+
+  const port = 3002;
+  app.listen(port, () => {
+    console.log(`Apollo ready at localhost:${port}${server.graphqlPath}`);
+  });
+};
+
+startExpressServer();
+startApolloServer();
