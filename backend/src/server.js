@@ -22,7 +22,7 @@ app.get("/health", (eq, res) => {
 });
 
 const port = process.env.PORT || 3000;
-const useApollo = true;
+const useApollo = false;
 
 if (useApollo) {
   const server = new ApolloServer({
