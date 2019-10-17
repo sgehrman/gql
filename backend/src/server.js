@@ -5,11 +5,15 @@ import dotenv from "dotenv";
 import schema from "./schema.js";
 import apolloSchema from "./apolloSchema.js";
 const { ApolloServer } = require("apollo-server-express");
+var bodyParser = require("body-parser");
 
 dotenv.config();
 
 const startExpressServer = () => {
   const app = express();
+
+  // this fixes the body not showing in moesif
+  app.use(bodyParser.json());
 
   var moesifMiddleware = moesifExpress({
     applicationId: process.env.APPID,
