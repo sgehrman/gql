@@ -97,7 +97,7 @@ const Home = props => {
       </div>
 
       <Dialog open={dialogOpen} onNav={dialogNav}>
-        {results}
+        <pre>{results}</pre>
       </Dialog>
     </PageHeader>
   );
