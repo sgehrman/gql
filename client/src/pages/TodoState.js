@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import HeaderBar from "../components/HeaderBar.js";
+import PageHeader from "../components/PageHeader.js";
 
 function Todo() {
   const [todos, setTodos] = useState([]);
@@ -18,10 +18,7 @@ function Todo() {
   };
 
   return (
-    <div>
-      <HeaderBar />
-      <div>Todo List using state</div>
-
+    <PageHeader title="Todo List using state">
       <form
         onSubmit={e => {
           e.preventDefault();
@@ -30,7 +27,11 @@ function Todo() {
           setText("");
         }}
       >
-        <input value={text} onChange={e => setText(e.target.value)} />
+        <input
+          value={text}
+          placeholder="Enter a todo"
+          onChange={e => setText(e.target.value)}
+        />
       </form>
 
       {todos.map((t, i) => {
@@ -46,7 +47,7 @@ function Todo() {
           </div>
         );
       })}
-    </div>
+    </PageHeader>
   );
 }
 

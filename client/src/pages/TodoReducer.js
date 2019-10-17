@@ -1,5 +1,5 @@
 import React, { useReducer, useState } from "react";
-import HeaderBar from "../components/HeaderBar.js";
+import PageHeader from "../components/PageHeader.js";
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -21,10 +21,7 @@ function Todo() {
   const [text, setText] = useState("");
 
   return (
-    <div>
-      <HeaderBar />
-
-      <div>Todo List using reducer</div>
+    <PageHeader title="Todo List using reducer">
       <form
         onSubmit={e => {
           e.preventDefault();
@@ -33,7 +30,11 @@ function Todo() {
           setText("");
         }}
       >
-        <input value={text} onChange={e => setText(e.target.value)} />
+        <input
+          value={text}
+          placeholder="Enter a todo"
+          onChange={e => setText(e.target.value)}
+        />
       </form>
 
       {todos.map((t, index) => (
@@ -47,7 +48,7 @@ function Todo() {
           {t.text}
         </div>
       ))}
-    </div>
+    </PageHeader>
   );
 }
 

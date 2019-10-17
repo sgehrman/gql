@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Link, withRouter } from "react-router-dom";
 import axios from "axios";
-import HeaderBar from "../components/HeaderBar.js";
 import styles from "../styles/shared.module.scss";
 import Dialog from "../components/Dialog.js";
+import PageHeader from "../components/PageHeader.js";
 
 const Home = props => {
   const [dialogOpen, setDialogOpen] = useState(false);
@@ -41,10 +41,7 @@ const Home = props => {
   };
 
   return (
-    <div className={styles.page}>
-      <HeaderBar />
-      <div>Home</div>
-
+    <PageHeader title="Home">
       <div className={styles.buttonList}>
         <Link to="/todoreducer">
           <button type="button">Todo with Reducer</button>
@@ -64,7 +61,7 @@ const Home = props => {
       <Dialog open={dialogOpen} onNav={dialogNav}>
         {results}
       </Dialog>
-    </div>
+    </PageHeader>
   );
 };
 

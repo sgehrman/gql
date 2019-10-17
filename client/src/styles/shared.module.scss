@@ -1,11 +1,6 @@
-.page {
-  display: flex;
-  flex-direction: column;
-
-  .buttonList {
-    display: grid;
-    grid-auto-flow: row dense;
-    gap: 10px;
-    justify-content: center;
-  }
+.buttonList {
+  display: grid;
+  grid-auto-flow: row dense;
+  gap: 10px;
+  justify-content: center;
 }

@@ -1,14 +1,10 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
-import HeaderBar from "../components/HeaderBar.js";
+import PageHeader from "../components/PageHeader.js";
 
 const About = props => {
   return (
-    <>
-      <HeaderBar />
-
-      <div>About</div>
-
+    <PageHeader title="About">
       <div>
         Source code can be found{" "}
         <a
@@ -19,7 +15,7 @@ const About = props => {
           here.
         </a>
       </div>
-    </>
+    </PageHeader>
   );
 };
 
