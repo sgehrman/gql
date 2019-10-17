@@ -26,5 +26,8 @@ APPID="eyJhcHAiOiI2MTc6MjA0I...I6MTU3MTE4NDAwMH0.4I75UmZcKoIZxRel9cZtzfXHZdnTGxT
 to run the client and server:
 
 ```
-npm start
+(cd to root)
+
+$ npm i
+$ npm start
 ```
