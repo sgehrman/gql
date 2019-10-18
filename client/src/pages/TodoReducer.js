@@ -1,5 +1,8 @@
 import React, { useReducer, useState } from "react";
 import PageHeader from "../components/PageHeader.js";
+import FormGroup from "@material-ui/core/FormGroup";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import Checkbox from "@material-ui/core/Checkbox";
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -37,17 +40,25 @@ function Todo() {
         />
       </form>
 
-      {todos.map((t, index) => (
-        <div
-          onClick={e => {
-            dispatch({ type: "done", completed: !t.completed, index });
-          }}
-          key={index}
-          style={{ textDecoration: t.completed ? "line-through" : "" }}
-        >
-          {t.text}
-        </div>
-      ))}
+      <FormGroup column>
+        {todos.map((t, index) => (
+          <FormControlLabel
+            key={index}
+            control={
+              <Checkbox
+                onChange={e => {
+                  dispatch({
+                    type: "done",
+                    completed: e.target.checked,
+                    index
+                  });
+                }}
+              />
+            }
+            label={t.text}
+          />
+        ))}
+      </FormGroup>
     </PageHeader>
   );
 }

@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import PageHeader from "../components/PageHeader.js";
+import FormGroup from "@material-ui/core/FormGroup";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import Checkbox from "@material-ui/core/Checkbox";
 
 function Todo() {
   const [todos, setTodos] = useState([]);
@@ -34,19 +37,23 @@ function Todo() {
         />
       </form>
 
-      {todos.map((t, i) => {
-        return (
-          <div
-            key={i}
-            onClick={e => {
-              setDone(i);
-            }}
-            style={{ textDecoration: t.completed ? "line-through" : "" }}
-          >
-            {t.text}
-          </div>
-        );
-      })}
+      <FormGroup column>
+        {todos.map((t, i) => {
+          return (
+            <FormControlLabel
+              key={i}
+              control={
+                <Checkbox
+                  onClick={e => {
+                    setDone(i);
+                  }}
+                />
+              }
+              label={t.text}
+            />
+          );
+        })}
+      </FormGroup>
     </PageHeader>
   );
 }
